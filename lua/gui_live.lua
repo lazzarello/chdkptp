@@ -544,6 +544,7 @@ function m.init()
 	end
 	local icnv = iup.canvas{rastersize="360x240",border="NO",expand="NO"}
 	m.icnv = icnv
+        m.dest = "" -- destination path for download, default is chdkptp dir
 	m.statslabel = iup.label{size="90x64",alignment="ALEFT:ATOP"}
 	m.container = iup.hbox{
 		iup.frame{
