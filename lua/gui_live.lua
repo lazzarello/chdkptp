@@ -32,6 +32,7 @@ bm_active -- bitmap streaming selected
 timer -- timer for fetching updates
 statslabel -- text for stats
 ]]
+        vp_active = 1, -- enable the viewport RIGHT NOW
 	skip_frames = 0, -- number of frames to drop based on how much longer than desired rate the last one took
 	skip_count = 0, -- total number skipped
 }
@@ -55,6 +56,7 @@ end
 
 local vp_toggle=iup.toggle{
 	title="Viewfinder",
+        value=1,
 	action=function(self,state)
 		m.vp_active = (state == 1)
 	end,
@@ -562,7 +564,7 @@ function m.init()
 							spinmax="30",
 							spinmin="1",
 							spininc="1",
-							value="10",
+							value="25",
 							action=function(self,c,newval)
 								local v = tonumber(newval)
 								local min = tonumber(self.spinmin)
