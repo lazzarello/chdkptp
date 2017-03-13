@@ -20,7 +20,7 @@ module for live view gui
 local stats=require'gui_live_stats'
 
 local m={
-	vp_par = 2, -- pixel aspect ratio for viewport 1:n, n=1,2
+	vp_par = 1, -- pixel aspect ratio for viewport 1:n, n=1,2
 	bm_par = 1, -- pixel aspect ratio for bitmap 1:n, n=1,2
 	vp_aspect_factor = 1, -- correction factor for height values when scaling for aspect
 --[[
@@ -123,6 +123,7 @@ end
 
 local vp_par_toggle = iup.toggle{
 	title="Viewfinder 1:1",
+        value=1,
 	action=function(self,state)
 		if state == 1 then
 			m.vp_par = 1

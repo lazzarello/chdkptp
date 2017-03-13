@@ -1,7 +1,8 @@
 TODO
 
-remove stats from existing liveview tab
 set defaults for liveview
-remove checkboxes from liveview
 bring live tab into focus at boot
+remove stats from existing liveview tab
+remove checkboxes from liveview
+
 Make tab with full screen liveview
