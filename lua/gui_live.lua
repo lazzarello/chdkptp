@@ -636,6 +636,47 @@ function m.init()
 					},
 				},
 			},
+                        iup.frame{
+                            title="Remote Capture",
+                            iup.vbox{
+                                gap="10",
+                                iup.button{
+                                    title="Destination",
+                                    size="75x15",
+                                    fgcolor="0 0 255",
+                                    action=function(self)
+                                        local dlg=iup.filedlg{
+                                            dialogtype = "DIR",
+                                            title = "Destination",
+                                        }
+                                        dlg:popup(iup_centerparent, iup_centerparent)
+                                        if dlg.status == "0" then
+                                            m.dest = dlg.value
+                                            gui.infomsg("download destination %s\n", m.dest)
+                                        end
+                                    end,
+                                },
+                                iup.button{
+                                    title="JPG Remote Shoot",
+                                    size="75x15",
+                                    fgcolor="255 0 0",
+                                    tip="Does not work for all cameras!",
+                                    action=function(self)
+                                        local cmd = m.dest ~= "" and string.format("rs '%s'", m.dest) or "rs"
+                                        add_status(cli:execute(cmd))
+                                    end,
+                                },
+                                iup.button{
+                                    title="DNG Remote Shoot",
+                                    size="75x15",
+                                    fgcolor="255 0 0",
+                                    action=function(self)
+                                        local cmd = m.dest ~= "" and string.format("rs '%s' -dng", m.dest) or "rs -dng"
+                                        add_status(cli:execute(cmd))
+                                    end,
+                                },
+                            },
+                        },
 		},
 		margin="4x4",
 		ngap="4"
