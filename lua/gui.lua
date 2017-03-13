@@ -492,13 +492,9 @@ contab = iup.vbox{
 
 maintabs = iup.tabs{
 	live.get_container(),
-        user.get_container(),
 	contab,
-	tree.get_container(),
-	tabtitle2='Console',
-	tabtitle3=tree.get_container_title(),
+	tabtitle1='Console',
 	tabtitle0=live.get_container_title(),
-        tabtitle1=user.get_container_title(),
 }
 
 live.set_tabs(maintabs)
