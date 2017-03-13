@@ -1,8 +1,6 @@
 TODO
 
-set defaults for liveview
-bring live tab into focus at boot
-remove stats from existing liveview tab
-remove checkboxes from liveview
-
-Make tab with full screen liveview
+bootup gui into rec mode
+add "remote shoot" button to same window as liveviewfinder
+figure out settings to disable enough metering to ensure a shutter request always fires
+set path for remote shoot jpeg destination
