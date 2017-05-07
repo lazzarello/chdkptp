@@ -48,6 +48,7 @@ gui.cam_dropdown.valuechanged_cb=errutil.wrap(function(self)
 	con=chdku.connection(gui.cached_devs[v])
 	if con:is_connected() then
 		con:update_connection_info()
+                gui.set_connection_defaults()
 	else
 		con.condev=con:get_con_devinfo()
 	end
@@ -140,14 +141,23 @@ function gui.set_connection_status(status)
 											chdku.apiver.MAJOR,chdku.apiver.MINOR,
 											con.apiver.MAJOR,con.apiver.MINOR)
 		gui.update_mode_list()
+                gui.set_connection_defaults()
 	else
 		gui.last_connection_status = false
 		connect_icon.active = "NO"
-		btn_connect.title = "Connect"
+		btn_connect.title = "Start!"
 		connect_label.title = string.format("host:%d.%d cam:-.-",chdku.apiver.MAJOR,chdku.apiver.MINOR)
 		clear_mode_list()
 	end
 	live.on_connect_change(con)
+end
+
+function gui.set_connection_defaults()
+        -- TODO turn this into a startup Lua script
+        con:execwait([[
+        set_lcd_display(0)
+	click("zoom_in")
+]])
 end
 
 function gui.update_connection_status()
@@ -198,6 +208,7 @@ btn_connect.action=errutil.wrap(function(self)
 		con:disconnect()
 	else
 		con:connect()
+                gui.set_connection_defaults()
 	end
 	gui.update_connection_status()
 end)
