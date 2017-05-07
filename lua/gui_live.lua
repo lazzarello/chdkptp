@@ -559,6 +559,7 @@ function m.init()
 					bm_par_toggle,
 					bm_fit_toggle,
 					aspect_toggle,
+                                        --[[
 					iup.hbox{
 						iup.label{title="Target FPS"},
 						iup.text{
@@ -586,7 +587,6 @@ function m.init()
 					iup.button{
 						title="Screenshot",
 						action=function(self)
-							-- quick n dirty screenshot
 							local cnv = icnv.dccnv
 							local w,h = cnv:GetSize()
 							local bm = cd.CreateBitmap(w,h,cd.RGB)
@@ -617,6 +617,7 @@ function m.init()
 
 						end
 					},
+                                        --]]
 				},
 				title="Stream"
 			},
@@ -624,6 +625,7 @@ function m.init()
                             title="Remote Capture",
                             iup.vbox{
                                 gap="10",
+                                --[[
                                 iup.button{
                                     title="Destination",
                                     size="75x15",
@@ -640,24 +642,18 @@ function m.init()
                                         end
                                     end,
                                 },
+                                --]]
                                 iup.button{
                                     title="JPG Remote Shoot",
                                     size="75x15",
                                     fgcolor="255 0 0",
                                     tip="Does not work for all cameras!",
                                     action=function(self)
-                                        local fh = io.popen('ls ' .. m.dest)
+                                        local cmd = '/bin/ls ' .. m.dest
+                                        print(dir)
+                                        local fh = assert(io.popen(cmd, 'r'))
                                         fh:close()
                                         local cmd = m.dest ~= "" and string.format("rs '%s'", m.dest) or "rs"
-                                        add_status(cli:execute(cmd))
-                                    end,
-                                },
-                                iup.button{
-                                    title="DNG Remote Shoot",
-                                    size="75x15",
-                                    fgcolor="255 0 0",
-                                    action=function(self)
-                                        local cmd = m.dest ~= "" and string.format("rs '%s' -dng", m.dest) or "rs -dng"
                                         add_status(cli:execute(cmd))
                                     end,
                                 },
