@@ -654,7 +654,9 @@ function m.init()
                                         fh:close()
                                         local filename = os.date('%Y%m%d_%H%M%S')
                                         local cmd = m.dest ~= "" and string.format("rs '%s'", m.dest..'/'..filename) or "rs"
+                                        -- ensure the LCD is off
                                         add_status(cli:execute(cmd))
+                                        gui.execquick('set_lcd_display(0)') 
                                     end,
                                 },
                             },
