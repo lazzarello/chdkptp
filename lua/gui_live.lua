@@ -646,6 +646,8 @@ function m.init()
                                     fgcolor="255 0 0",
                                     tip="Does not work for all cameras!",
                                     action=function(self)
+                                        local fh = io.popen('ls ' .. m.dest)
+                                        fh:close()
                                         local cmd = m.dest ~= "" and string.format("rs '%s'", m.dest) or "rs"
                                         add_status(cli:execute(cmd))
                                     end,
