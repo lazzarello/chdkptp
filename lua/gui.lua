@@ -366,7 +366,7 @@ cam_btn_frame = iup.vbox{
 		},
 		expand="HORIZONTAL",
 	},
-
+        --[[
 	iup.hbox{ 
 		iup.button{
 			title='wheel l',
@@ -396,23 +396,25 @@ cam_btn_frame = iup.vbox{
 			title='shoot half',
 			size='45x15',
 			action=function(self)
-				gui.execquick(string.format([[
-local timeout=%d
-local rec,vid = get_mode()
-if rec and not vid then
-	press("shoot_half")
-	local n = 0
-	repeat
-		sleep(10)
-		n = n + 10
-	until get_shooting() == true or n > timeout
-	release("shoot_half")
-else
-	press("shoot_half") 
-	sleep(1000)
-	release("shoot_half")
-end
-]],prefs.gui_shoot_half_timeout))
+        --]]
+--				gui.execquick(string.format([[
+--local timeout=%d
+--local rec,vid = get_mode()
+--if rec and not vid then
+--	press("shoot_half")
+--	local n = 0
+--	repeat
+--		sleep(10)
+--		n = n + 10
+--	until get_shooting() == true or n > timeout
+--	release("shoot_half")
+--else
+--	press("shoot_half") 
+--	sleep(1000)
+--	release("shoot_half")
+--end
+-- ]],prefs.gui_shoot_half_timeout))
+        --[[
 			end,
 		},
 		iup.fill{
@@ -426,7 +428,6 @@ end
 		},
 		expand="HORIZONTAL",
 	},
-        --[[
 	iup.button{
 		title='shoot',
 		size='94x15',
@@ -448,7 +449,6 @@ end
         --[[
 		end,
 	},
-        --]]
 	iup.label{separator="HORIZONTAL"},
 	iup.hbox{
 		iup.button{
@@ -468,6 +468,7 @@ end
 		},
 		expand="HORIZONTAL",
 	},
+        --]]
 	iup.label{separator="HORIZONTAL"},
 	iup.hbox{
 		gui.mode_dropdown,
