@@ -415,26 +415,29 @@ end
 		},
 		expand="HORIZONTAL",
 	},
-
+        --[[
 	iup.button{
 		title='shoot',
 		size='94x15',
 		action=function(self)
 			-- video seems to need a small delay after half press to reliably start recording
-			gui.execquick([[
-local rec,vid = get_mode()
-if rec and not vid then
-	shoot()
-else
-	if vid then
-		press('shoot_half')
-		sleep(200)
-	end
-	click('shoot_full')
-end
-]])
+        --]]
+--			gui.execquick([[
+--local rec,vid = get_mode()
+--if rec and not vid then
+--	shoot()
+--else
+--	if vid then
+--		press('shoot_half')
+--		sleep(200)
+--	end
+--	click('shoot_full')
+--end
+-- ]])
+        --[[
 		end,
 	},
+        --]]
 	iup.label{separator="HORIZONTAL"},
 	iup.hbox{
 		iup.button{

@@ -644,10 +644,10 @@ function m.init()
                                 },
                                 --]]
                                 iup.button{
-                                    title="JPG Remote Shoot",
-                                    size="75x15",
+                                    title="Shoot!",
+                                    size="120x50",
                                     fgcolor="255 0 0",
-                                    tip="Does not work for all cameras!",
+                                    tip="Fix up, look sharp!",
                                     action=function(self)
                                         local cmd = '/bin/ls ' .. m.dest
                                         local fh = assert(io.popen(cmd, 'r'))
