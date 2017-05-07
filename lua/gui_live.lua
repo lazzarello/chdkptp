@@ -650,10 +650,10 @@ function m.init()
                                     tip="Does not work for all cameras!",
                                     action=function(self)
                                         local cmd = '/bin/ls ' .. m.dest
-                                        print(dir)
                                         local fh = assert(io.popen(cmd, 'r'))
                                         fh:close()
-                                        local cmd = m.dest ~= "" and string.format("rs '%s'", m.dest) or "rs"
+                                        local filename = os.date('%Y%m%d_%H%M%S')
+                                        local cmd = m.dest ~= "" and string.format("rs '%s'", m.dest..'/'..filename) or "rs"
                                         add_status(cli:execute(cmd))
                                     end,
                                 },
