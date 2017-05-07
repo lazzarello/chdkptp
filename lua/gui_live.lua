@@ -20,7 +20,7 @@ module for live view gui
 local stats=require'gui_live_stats'
 
 local m={
-	vp_par = 1, -- pixel aspect ratio for viewport 1:n, n=1,2
+	vp_par = 2, -- pixel aspect ratio for viewport 1:n, n=1,2
 	bm_par = 1, -- pixel aspect ratio for bitmap 1:n, n=1,2
 	vp_aspect_factor = 1, -- correction factor for height values when scaling for aspect
 --[[
@@ -544,7 +544,7 @@ function m.init()
 	end
 	local icnv = iup.canvas{rastersize="360x240",border="NO",expand="NO"}
 	m.icnv = icnv
-        m.dest = "" -- destination path for download, default is chdkptp dir
+        m.dest = "/home/pi/pix" -- destination path for download, default is chdkptp dir
 	m.statslabel = iup.label{size="90x64",alignment="ALEFT:ATOP"}
 	m.container = iup.hbox{
 		iup.frame{
@@ -619,23 +619,6 @@ function m.init()
 					},
 				},
 				title="Stream"
-			},
-			iup.tabs{
-				iup.vbox{
-					m.statslabel,
-					tabtitle="Statistics",
-				},
-				iup.vbox{
-					tabtitle="Debug",
-					iup.toggle{title="Dump to file",action=toggle_dump},
-					iup.toggle{title="Play from file",action=toggle_play_dump},
-					iup.button{
-						title="Quick dump",
-						action=function()
-							add_status(cli:execute('lvdump'))
-						end,
-					},
-				},
 			},
                         iup.frame{
                             title="Remote Capture",
