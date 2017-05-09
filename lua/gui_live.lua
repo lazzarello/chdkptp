@@ -654,8 +654,14 @@ function m.init()
                                         fh:close()
                                         local filename = os.date('%Y%m%d_%H%M%S')
                                         local cmd = m.dest ~= "" and string.format("rs '%s'", m.dest..'/'..filename) or "rs"
-                                        -- ensure the LCD is off
+                                        con:execwait("play_sound(6)")
+                                        sys.sleep(1000)
+                                        con:execwait("play_sound(6)")
+                                        sys.sleep(1000)
+                                        con:execwait("play_sound(6)")
+                                        sys.sleep(1000)
                                         add_status(cli:execute(cmd))
+                                        -- ensure the LCD is off
                                         gui.execquick('set_lcd_display(0)') 
                                     end,
                                 },
