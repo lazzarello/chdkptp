@@ -655,11 +655,9 @@ function m.init()
                                         local filename = os.date('%Y%m%d_%H%M%S')
                                         local cmd = m.dest ~= "" and string.format("rs '%s'", m.dest..'/'..filename) or "rs"
                                         con:execwait("play_sound(3)")
-                                        sys.sleep(1000)
+                                        sys.sleep(2000)
                                         con:execwait("play_sound(3)")
-                                        sys.sleep(1000)
-                                        con:execwait("play_sound(3)")
-                                        sys.sleep(1000)
+                                        sys.sleep(1500)
                                         add_status(cli:execute(cmd))
                                         -- ensure the LCD is off
                                         gui.execquick('set_lcd_display(0)') 
