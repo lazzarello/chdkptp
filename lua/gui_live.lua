@@ -654,6 +654,11 @@ function m.init()
                                         fh:close()
                                         local filename = os.date('%Y%m%d_%H%M%S')
                                         local cmd = m.dest ~= "" and string.format("rs '%s'", m.dest..'/'..filename) or "rs"
+                                        -- set to ISO 250 and 1/50" shutter. Apeture should be fixed.
+                                        con:execwait([[
+                                          set_iso_real(150)
+                                          set_tv96_direct(544)
+                                        ]])
                                         con:execwait("play_sound(3)")
                                         sys.sleep(2000)
                                         con:execwait("play_sound(3)")
