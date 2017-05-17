@@ -210,7 +210,7 @@ btn_connect.action=errutil.wrap(function(self)
 		con:connect()
                 gui.set_connection_defaults()
                 -- ensure we are in record mode
-                switch_mode(1)
+                -- switch_mode(1)
 	end
 	gui.update_connection_status()
 end)
@@ -267,7 +267,7 @@ TODO the cli command should integrate with this
 switch_mode=errutil.wrap(function(m)
 	local capmode
 	if m == 0 then
-		gui.execquick('if get_mode() then switch_mode_usb(1) end')
+		gui.execquick('if get_mode() then switch_mode_usb(0) end')
 	else
 		-- switch mode, wait for complete, return current mode
 		capmode=con:execwait([[
