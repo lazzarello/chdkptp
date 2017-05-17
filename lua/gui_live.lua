@@ -33,6 +33,7 @@ timer -- timer for fetching updates
 statslabel -- text for stats
 ]]
         vp_active = 1, -- enable the viewport RIGHT NOW
+        bm_active = 1,
 	skip_frames = 0, -- number of frames to drop based on how much longer than desired rate the last one took
 	skip_count = 0, -- total number skipped
 }
@@ -64,6 +65,7 @@ local vp_toggle=iup.toggle{
 
 local bm_toggle = iup.toggle{
 	title="UI Overlay",
+        value=1,
 	action=function(self,state)
 		m.bm_active = (state == 1)
 	end,
@@ -555,11 +557,11 @@ function m.init()
 				iup.vbox{
 					vp_toggle,
 					bm_toggle,
+                                        --[[
 					vp_par_toggle,
 					bm_par_toggle,
 					bm_fit_toggle,
 					aspect_toggle,
-                                        --[[
 					iup.hbox{
 						iup.label{title="Target FPS"},
 						iup.text{
@@ -619,10 +621,10 @@ function m.init()
 					},
                                         --]]
 				},
-				title="Stream"
+				title="Video Settings"
 			},
                         iup.frame{
-                            title="Remote Capture",
+                            title="Take a picture",
                             iup.vbox{
                                 gap="10",
                                 --[[

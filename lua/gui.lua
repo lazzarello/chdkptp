@@ -303,6 +303,8 @@ function cam_btn(name,title)
 		end,
 	}
 end
+
+--[[
 cam_btn("erase")
 cam_btn("up")
 cam_btn("print")
@@ -312,6 +314,7 @@ cam_btn("right")
 cam_btn("display","disp")
 cam_btn("down")
 cam_btn("menu")
+--]]
 
 gui.mode_dropdown = iup.list{
 	VISIBLECOLUMNS="10",
@@ -451,6 +454,7 @@ cam_btn_frame = iup.vbox{
         --[[
 		end,
 	},
+        --]]
 	iup.label{separator="HORIZONTAL"},
 	iup.hbox{
 		iup.button{
@@ -470,11 +474,12 @@ cam_btn_frame = iup.vbox{
 		},
 		expand="HORIZONTAL",
 	},
-        --]]
 	iup.label{separator="HORIZONTAL"},
+        --[[
 	iup.hbox{
 		gui.mode_dropdown,
 	},
+        --]]
 	iup.fill{},
 	iup.hbox{
 		iup.button{
